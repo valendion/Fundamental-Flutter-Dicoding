@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_cards/flutter_custom_cards.dart';
-import 'package:fundamental_flutter/model/restourant.dart';
-import 'package:fundamental_flutter/style/color_theme.dart';
+import 'package:fundamental_flutter/utils/constans.dart';
 import 'package:fundamental_flutter/utils/text_string.dart';
-
+import '../model/restourant_model.dart';
 import '../style/theme.dart';
 
 class ItemRestourant extends StatelessWidget {
-  Restaurant restourant;
+  Restaurants restourant;
   ItemRestourant({required this.restourant, Key? key}) : super(key: key);
 
   @override
@@ -24,9 +23,10 @@ class ItemRestourant extends StatelessWidget {
             child: SizedBox.fromSize(
               size: const Size.fromRadius(48), // Image radius
               child: Hero(
-                  tag: restourant.id,
-                  child:
-                      Image.network(restourant.pictureId, fit: BoxFit.cover)),
+                  tag: restourant.id ?? '',
+                  child: Image.network(
+                      '${Constans.mediumQualityImageUrl}${restourant.pictureId}',
+                      fit: BoxFit.cover)),
             ),
           ),
           const SizedBox(
@@ -37,7 +37,7 @@ class ItemRestourant extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  restourant.name,
+                  restourant.name ?? '',
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headline5?.merge(title),
                 ),
@@ -48,7 +48,7 @@ class ItemRestourant extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Icon(Icons.location_pin),
-                    Text(restourant.city,
+                    Text(restourant.city ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .button

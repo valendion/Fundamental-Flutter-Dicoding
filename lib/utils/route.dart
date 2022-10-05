@@ -8,5 +8,5 @@ import '../pages/home_page.dart';
 Map<String, Widget Function(BuildContext)> routes = {
   splashPage: (context) => const SplashPage(),
   homePage: (context) => const HomePage(),
-  detailPage: (context) => const DetailPage(),
+  // detailPage: (context) => const DetailPage(),
 };
