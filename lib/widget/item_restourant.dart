@@ -13,7 +13,7 @@ class ItemRestourant extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       onTap: () {
-        Navigator.pushNamed(context, detailPage, arguments: restourant);
+        Navigator.pushNamed(context, detailPage, arguments: restourant.id);
       },
       borderRadius: 10,
       child: Row(

@@ -27,11 +27,11 @@ class ResponseDetailRestourant {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['error'] = this.error;
-    data['message'] = this.message;
-    if (this.restaurant != null) {
-      data['restaurant'] = this.restaurant!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['error'] = error;
+    data['message'] = message;
+    if (restaurant != null) {
+      data['restaurant'] = restaurant!.toJson();
     }
     return data;
   }
@@ -46,7 +46,7 @@ class Restaurant {
   String? pictureId;
   List<Categories>? categories;
   Menus? menus;
-  double? rating;
+  num? rating;
   List<CustomerReviews>? customerReviews;
 
   Restaurant(
@@ -85,23 +85,23 @@ class Restaurant {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
-    data['city'] = this.city;
-    data['address'] = this.address;
-    data['pictureId'] = this.pictureId;
-    if (this.categories != null) {
-      data['categories'] = this.categories!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['description'] = description;
+    data['city'] = city;
+    data['address'] = address;
+    data['pictureId'] = pictureId;
+    if (categories != null) {
+      data['categories'] = categories!.map((v) => v.toJson()).toList();
     }
-    if (this.menus != null) {
-      data['menus'] = this.menus!.toJson();
+    if (menus != null) {
+      data['menus'] = menus!.toJson();
     }
-    data['rating'] = this.rating;
-    if (this.customerReviews != null) {
+    data['rating'] = rating;
+    if (customerReviews != null) {
       data['customerReviews'] =
-          this.customerReviews!.map((v) => v.toJson()).toList();
+          customerReviews!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -117,8 +117,8 @@ class Categories {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
     return data;
   }
 }
@@ -145,12 +145,12 @@ class Menus {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.foods != null) {
-      data['foods'] = this.foods!.map((v) => v.toMap()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (foods != null) {
+      data['foods'] = foods!.map((v) => v.toMap()).toList();
     }
-    if (this.drinks != null) {
-      data['drinks'] = this.drinks!.map((v) => v.toMap()).toList();
+    if (drinks != null) {
+      data['drinks'] = drinks!.map((v) => v.toMap()).toList();
     }
     return data;
   }
@@ -170,10 +170,10 @@ class CustomerReviews {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['name'] = this.name;
-    data['review'] = this.review;
-    data['date'] = this.date;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['review'] = review;
+    data['date'] = date;
     return data;
   }
 }

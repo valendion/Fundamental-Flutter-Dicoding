@@ -8,8 +8,11 @@ abstract class DetailEvent extends Equatable {
 }
 
 class GetDetailRestourant implements DetailEvent {
+  String id;
+
+  GetDetailRestourant(this.id);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [id];
 
   @override
   bool? get stringify => false;

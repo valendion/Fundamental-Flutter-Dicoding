@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fundamental_flutter/data/repository/restourant_repository.dart';
-import 'package:fundamental_flutter/model/response_detail.dart';
 import 'package:fundamental_flutter/model/restourant_model.dart';
 
 part 'home_event.dart';

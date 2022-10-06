@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fundamental_flutter/style/theme.dart';
 import 'package:fundamental_flutter/utils/text_string.dart';
 import 'package:fundamental_flutter/widget/list_home_widget.dart';
-import 'package:fundamental_flutter/widget/message_widget.dart';
 import 'package:fundamental_flutter/widget/not_found_widget.dart';
 import '../bloc/home/home_bloc.dart';
-import '../widget/custom_widget.dart';
 import '../widget/loading_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,9 +34,20 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                greeting,
-                style: Theme.of(context).textTheme.overline?.merge(subTitle),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    greeting,
+                    style:
+                        Theme.of(context).textTheme.overline?.merge(subTitle),
+                  ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, searchPage);
+                      },
+                      child: const Icon(Icons.search))
+                ],
               ),
               const SizedBox(
                 height: 4,
@@ -75,21 +84,21 @@ class _HomePageState extends State<HomePage> {
                 child:
                     BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
                   if (state is HomeInitial) {
-                    return LoadingWidget();
+                    return const LoadingWidget();
                   } else if (state is HomeLoading) {
-                    return LoadingWidget();
+                    return const LoadingWidget();
                   } else if (state is HomeLoaded) {
-                    if (state.restourants.length != 0) {
+                    if (state.restourants.isNotEmpty) {
                       return ListHomeWidget(
                         restourants: state.restourants,
                       );
                     } else {
-                      return NotFoundWidget();
+                      return const NotFoundWidget();
                     }
                   } else if (state is HomeShowMessageError) {
-                    return NotFoundWidget();
+                    return const NotFoundWidget();
                   } else {
-                    return NotFoundWidget();
+                    return const NotFoundWidget();
                   }
                 }),
               ))
