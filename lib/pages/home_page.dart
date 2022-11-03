@@ -19,6 +19,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    if (_homeBloc.isClosed) {
+      _homeBloc.add(GetAllRestaurant());
+    }
     _homeBloc.add(GetAllRestaurant());
     super.initState();
   }
@@ -35,18 +38,34 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     greeting,
                     style:
                         Theme.of(context).textTheme.overline?.merge(subTitle),
                   ),
+                  const Spacer(),
                   InkWell(
                       onTap: () {
                         Navigator.pushNamed(context, searchPage);
                       },
-                      child: const Icon(Icons.search))
+                      child: const Icon(Icons.search)),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, favoritePage);
+                      },
+                      child: const Icon(Icons.favorite_rounded)),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, settingPage);
+                      },
+                      child: const Icon(Icons.settings))
                 ],
               ),
               const SizedBox(

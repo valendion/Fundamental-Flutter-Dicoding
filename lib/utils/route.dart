@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fundamental_flutter/pages/detail_page.dart';
+import 'package:fundamental_flutter/pages/favorite_page.dart';
 import 'package:fundamental_flutter/pages/search_page.dart';
+import 'package:fundamental_flutter/pages/settings_page.dart';
 import 'package:fundamental_flutter/pages/splash_page.dart';
 import 'package:fundamental_flutter/utils/text_string.dart';
 
@@ -11,4 +13,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   homePage: (context) => const HomePage(),
   detailPage: (context) => const DetailPage(),
   searchPage: (context) => const SearchPage(),
+  favoritePage: (context) => const FavoritePage(),
+  settingPage: (context) => const SettingsPage(),
 };

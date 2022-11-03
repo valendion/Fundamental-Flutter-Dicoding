@@ -11,15 +11,19 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
   DetailBloc() : super(DetailInitial()) {
     RestourantRepository restourantRepository = RestourantRepository();
     on<GetDetailRestourant>((event, emit) async {
-      emit(DetailLoading());
-      var responseDetailRestourant =
-          await restourantRepository.getDetailRestourant(event.id);
-      var restourant = responseDetailRestourant.restaurant;
+      try {
+        emit(DetailLoading());
+        var responseDetailRestourant =
+            await restourantRepository.getDetailRestourant(event.id);
+        var restourant = responseDetailRestourant.restaurant;
 
-      if (restourant != null) {
-        emit(DetailLoaded(restourant));
-      } else {
-        emit(DetailShowMessageError(responseDetailRestourant.errorMessage!));
+        if (restourant != null) {
+          emit(DetailLoaded(restourant));
+        } else {
+          emit(DetailShowMessageError(responseDetailRestourant.errorMessage!));
+        }
+      } catch (e) {
+        emit(DetailShowMessageError(e.toString()));
       }
     });
   }

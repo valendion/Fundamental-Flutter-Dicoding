@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fundamental_flutter/style/theme.dart';
 import 'package:lottie/lottie.dart';
 
+import '../utils/notification_helper.dart';
+import '../utils/text_string.dart';
 import 'home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,13 +14,23 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
   @override
   void initState() {
+    _notificationHelper.configureSelectNotification(detailPage);
+
     Future.delayed(const Duration(seconds: 3), () {
       Route route = MaterialPageRoute(builder: (context) => const HomePage());
       Navigator.pushAndRemoveUntil(context, route, (route) => false);
     });
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 
   @override
