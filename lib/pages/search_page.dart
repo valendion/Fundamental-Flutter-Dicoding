@@ -48,10 +48,11 @@ class SearchPage extends StatelessWidget {
                       listener: (context, state) {
                 if (state is SearchShowMessageError) {
                   ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text(state.message)));
+                      .showSnackBar(SnackBar(content: Text(terjadi_kesalahan)));
                 }
               }, child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
+                  print('State $state');
                   if (state is SearchInitial) {
                     return Container();
                   } else if (state is SearchLoading) {
@@ -59,18 +60,16 @@ class SearchPage extends StatelessWidget {
                   } else if (state is SearchInput) {
                     return Container();
                   } else if (state is SearchLoaded) {
-                    if (state.restourants.isNotEmpty) {
-                      restourants = state.restourants;
-                      return ListHomeWidget(
-                        restourants: restourants,
-                      );
-                    } else {
-                      return const NotFoundWidget();
-                    }
+                    restourants = state.restourants;
+                    return ListHomeWidget(
+                      restourants: restourants,
+                    );
+                  } else if (state is SearchEmpty) {
+                    return NotFoundWidget(message: noData);
                   } else if (state is SearchShowMessageError) {
-                    return const NotFoundWidget();
+                    return NotFoundWidget(message: somethingWrong);
                   } else {
-                    return const NotFoundWidget();
+                    return NotFoundWidget(message: somethingWrong);
                   }
                 },
               )))

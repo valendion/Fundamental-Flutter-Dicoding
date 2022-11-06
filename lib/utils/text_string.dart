@@ -21,3 +21,4 @@ String searchLabel = 'Masukkan Pencarian';
 String somethingWrong = 'Something Wrong\nPlease check your connection';
 String somethingWrong2 = 'Something Wrong';
 String noData = 'No Data';
+String terjadi_kesalahan = 'Terjadi Kesalahan';

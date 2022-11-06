@@ -54,3 +54,11 @@ class SearchInput implements SearchState {
   @override
   bool? get stringify => false;
 }
+
+class SearchEmpty implements SearchState {
+  @override
+  List<Object> get props => [];
+
+  @override
+  bool? get stringify => false;
+}

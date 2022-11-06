@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   android_alarm_manager_plus: ^2.1.0
+  build_runner: ^2.3.2
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   equatable: ^2.0.5
@@ -40,6 +41,7 @@ dependencies:
   google_fonts: ^3.0.1
   intl: ^0.17.0
   lottie: ^1.4.2
+  mockito: ^5.3.2
   readmore: ^2.2.0
   rxdart: ^0.27.5
   shared_preferences: ^2.0.15
@@ -47,9 +49,9 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^1.0.0
-  http_mock_adapter: ^0.3.3
   flutter_test:
     sdk: flutter
+  http_mock_adapter: ^0.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -4,14 +4,15 @@ import 'package:fundamental_flutter/utils/text_string.dart';
 import '../style/theme.dart';
 
 class NotFoundWidget extends StatelessWidget {
-  const NotFoundWidget({super.key});
+  final String message;
+  const NotFoundWidget({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
         textAlign: TextAlign.center,
-        somethingWrong,
+        message,
         style: Theme.of(context).textTheme.headline6?.merge(title),
       ),
     );

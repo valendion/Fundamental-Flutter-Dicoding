@@ -66,9 +66,13 @@ class _DetailPageState extends State<DetailPage> {
                           IsFavoriteRestourant(id: state.restaurant.id ?? ''));
                       return _detailLayout(state.restaurant);
                     } else if (state is DetailShowMessageError) {
-                      return const NotFoundWidget();
+                      return NotFoundWidget(
+                        message: somethingWrong,
+                      );
                     } else {
-                      return const NotFoundWidget();
+                      return NotFoundWidget(
+                        message: somethingWrong,
+                      );
                     }
                   },
                 ),
@@ -89,7 +93,9 @@ class _DetailPageState extends State<DetailPage> {
   Widget _detailLayout(Restaurant restourant) {
     bool status = false;
     if (restourant.id == null) {
-      return const NotFoundWidget();
+      return NotFoundWidget(
+        message: somethingWrong,
+      );
     } else {
       return Stack(
         children: [

@@ -112,12 +112,18 @@ class _HomePageState extends State<HomePage> {
                         restourants: state.restourants,
                       );
                     } else {
-                      return const NotFoundWidget();
+                      return NotFoundWidget(
+                        message: somethingWrong,
+                      );
                     }
                   } else if (state is HomeShowMessageError) {
-                    return const NotFoundWidget();
+                    return NotFoundWidget(
+                      message: somethingWrong,
+                    );
                   } else {
-                    return const NotFoundWidget();
+                    return NotFoundWidget(
+                      message: somethingWrong,
+                    );
                   }
                 }),
               ))
